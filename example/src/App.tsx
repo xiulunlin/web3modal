@@ -178,10 +178,11 @@ class App extends React.Component<any, any> {
 
   public onConnect = async () => {
     const provider = await this.web3Modal.connect();
-
+    // 订阅事件
     await this.subscribeProvider(provider);
-
+    // 连接
     await provider.enable();
+    // 初始化web3
     const web3: any = initWeb3(provider);
 
     const accounts = await web3.eth.getAccounts();
